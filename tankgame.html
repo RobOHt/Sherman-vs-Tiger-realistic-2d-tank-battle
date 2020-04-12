@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-image:url("desert.png");
+}
+</style>
+</head>
+<body onload="startGame()"></body>
+
+<!-- Mirrored from www.w3schools.com/games/tryit.asp?filename=trygame_movement_keyboard by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Jun 2016 15:25:32 GMT -->
+</html>
+<script>
+var test1;
+var test2;
+var test3;
+var cannonc=0;
+var movec=0;
+var convert="";
+var tFlag = 0;  
+var tPass = 0;
+var speed=-5;
+var myGamePiecet;
+var size=60;
+var cannon;
+var scs=0;
+var counts=5000;
+var sc=0;
+var count=6000;
+var charge;
+var guns;
+var myGamePieces;
+var cannons;
+var movecs=0;
+var cannoncs=0;
+var firec=0;
+var firecs=0;
+var angles=1.57;
+var show;
+var texts;
+var text;
+var mytopLeftx = 0;
+var mytopRightx=0;
+var mybottomLeftx = 0;
+var mybottomRightx = 0;
+var mytopLefty = 0;
+var mytopRighty=0;
+var mybottomLefty = 0;
+var mybottomRighty = 0;
+var otopLeftx = 0;
+var otopRightx=0;
+var obottomLeftx = 0;
+var obottomRightx = 0;
+var otopLefty = 0;
+var otopRighty=0;
+var obottomLefty = 0;
+var obottomRighty = 0;
+var chance=0;
+var chances=0;
+var cannonsTop=0;
+var cannonsRight=0;
+var cannonsBottom=0;
+var cannonsLeft=0;
+var cannonTop=0;
+var cannonRight=0;
+var cannonBottom=0;
+var cannonLeft=0;
+var ha1=0;var area1=0;
+var ha2=0;var area2=0;
+var ha3=0;var area3=0;
+var ha4=0;var area4=0;
+var hb1=0;var area5=0;
+var hb2=0;var area6=0;
+var hb3=0;var area7=0;
+var hb4=0;var area8=0;
+var hc1=0;var area9=0;
+var hc2=0;var area10=0;
+var hc3=0;var area11=0;
+var hc4=0;var area12=0;
+var hd1=0;var area13=0;
+var hd2=0;var area14=0;
+var hd3=0;var area15=0;
+var hd4=0;var area16=0;
+var tigerAp=true;
+var tigerBlood=100;
+var shermanAp=true;
+var shermanBlood=100;
+var texts;
+var shows;
+var counts=5000;
+var blood;
+var bloods;
+var explode1;
+var explode2;
+var explode3;
+var explode4;
+var explode5;
+var explode6;
+var explode7;
+var explode8;
+var explode9;
+var explode10;
+var explode11;
+var explode12;
+var explode13;
+var explode14;
+var explode15;
+var explode16;
+var explode17;
+var explode18;
+var explode19;
+var explode20;
+
+var explodes1;
+var explodes2;
+var explodes3;
+var explodes4;
+var explodes5;
+var explodes6;
+var explodes7;
+var explodes8;
+var explodes9;
+var explodes10;
+var explodes11;
+var explodes12;
+var explodes13;
+var explodes14;
+var explodes15;
+var explodes16;
+var explodes17;
+var explodes18;
+var explodes19;
+var explodes20;
+
+var obs1;
+var obs2;
+var obs3;
+var obs4;
+var obs5;
+
+var explodelen=1;
+var explodeheight=10;
+var exx=999;
+var exy=999;
+var explodespeed=0.6;
+
+function startGame() {
+    //sherman explode pieces:
+    explode1=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 0*Math.PI/180);
+    explode2=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*Math.PI/180);
+    explode3=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*2*Math.PI/180);
+    explode4=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*3*Math.PI/180);
+    explode5=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*4*Math.PI/180);
+    explode6=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*5*Math.PI/180);
+    explode7=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*6*Math.PI/180);
+    explode8=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*7*Math.PI/180);
+    explode9=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*8*Math.PI/180);
+    explode10=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*9*Math.PI/180);
+    explode11=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*10*Math.PI/180);
+    explode12=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*11*Math.PI/180);
+    explode13=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*12*Math.PI/180);
+    explode14=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*13*Math.PI/180);
+    explode15=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*14*Math.PI/180);
+    explode16=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*15*Math.PI/180);
+    explode17=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*16*Math.PI/180);
+    explode18=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*17*Math.PI/180);
+    explode19=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*18*Math.PI/180);
+    explode20=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*20*Math.PI/180);
+    //tiger explode pieces:
+    explodes1=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 0*Math.PI/180);
+    explodes2=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*Math.PI/180);
+    explodes3=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*2*Math.PI/180);
+    explodes4=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*3*Math.PI/180);
+    explodes5=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*4*Math.PI/180);
+    explodes6=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*5*Math.PI/180);
+    explodes7=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*6*Math.PI/180);
+    explodes8=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*7*Math.PI/180);
+    explodes9=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*8*Math.PI/180);
+    explodes10=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*9*Math.PI/180);
+    explodes11=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*10*Math.PI/180);
+    explodes12=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*11*Math.PI/180);
+    explodes13=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*12*Math.PI/180);
+    explodes14=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*13*Math.PI/180);
+    explodes15=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*14*Math.PI/180);
+    explodes16=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*15*Math.PI/180);
+    explodes17=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*16*Math.PI/180);
+    explodes18=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*17*Math.PI/180);
+    explodes19=new component(explodelen, explodeheight, "#fff000", exx, exy, "block", 18*18*Math.PI/180);
+    explodes20=new component(explodelen, explodeheight, "red", exx, exy, "block", 18*20*Math.PI/180);
+
+    obs1=new component(20, 20, "obstacle.png", 200+Math.random()*700, 100+Math.random()*300, "image", Math.random()*10+50*20*Math.PI/180);
+    obs2=new component(20, 20, "obstacle.png", 200+Math.random()*700, 100+Math.random()*300, "image", Math.random()*10+50*20*Math.PI/180);
+    obs3=new component(20, 20, "obstacle.png", 200+Math.random()*700, 100+Math.random()*300, "image", Math.random()*10+50*20*Math.PI/180);
+    obs4=new component(20, 20, "obstacle.png", 200+Math.random()*700, 100+Math.random()*300, "image", Math.random()*10+50*20*Math.PI/180);
+    obs5=new component(20, 20, "obstacle.png", 200+Math.random()*700, 100+Math.random()*300, "image", Math.random()*10+50*20*Math.PI/180);
+
+    text=new component("15px", "Consolas", "#bc4a78", 950, 515, "text");
+    show=new component(30, 90, "cannonr.png", 1000, 450, "image", 0);
+    blood=new component(110, 15, "#bc4a78", 1004, 530, "block", 0);
+
+    texts=new component("15px", "Consolas", "#367789", 50, 515, "text");
+    shows=new component(30, 90, "cannonr.png", 100, 450, "image", 0);
+    bloods=new component(110, 15, "#367789", 104, 530, "block", 0);
+    //sherman tank:
+    gun = new component(35.77, 125.19, "shermang.png", 100, 100, "image", angles);
+    myGamePiecet = new component(40.15, 85.23, "sherman.png", 100, 100, "image", angles);
+    cannon=new component(2, 9, "cannon.png", 100, 100, "image", angles);
+    //tiger tank:
+    guns = new component(47.69, 261.54, "tigerg.png", 1000, 450, "image", 0);
+    myGamePieces = new component(61.54, 100.31, "tiger.png", 1000, 450, "image", 0);
+    cannons= new component(2, 9, "cannon.png", 1000, 450, "image", 0);
+
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 1100;
+        this.canvas.height = 550;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('keydown', function (e) {
+            e.preventDefault();
+            myGameArea.keys = (myGameArea.keys || []);
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+function everyinterval(n) {
+    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+    return false;
+}
+function area(x1,y1,x2,y2,x3,y3){
+    var xa=Math.max(x1,x2,x3);
+    var xi=Math.min(x1,x2,x3);
+    var ya=Math.max(y1,y2,y3);
+    var yi=Math.min(y1,y2,y3);
+    var xm=x1+x2+x3-xa-xi;
+    var ym=y1+y2+y3-ya-yi;
+    var xn=0;
+    var yn=0;
+    var area=0;
+
+    if((x1-xa)*(x1-xi)+(y1-ya)*(y1-yi)==0){
+        xn=x1;
+        yn=y1;
+    }if((x2-xa)*(x2-xi)+(y2-ya)*(y2-yi)==0){
+        xn=x2;
+        yn=y2;
+    }if((x3-xa)*(x3-xi)+(y3-ya)*(y3-yi)==0){
+        xn=x3;
+        yn=y3;
+    }
+
+    area=((xa-xi)*(ya-yi)-Math.abs(xm-xn)*Math.abs(ym-yn))/2;
+    return area;
+}
+function component(width, height, color, x, y, type, part) {
+    
+    this.type = type;
+    if (type == "image") {
+        this.image = new Image();
+        this.image.src = color;
+     }
+    this.width = width;
+    this.height = height;
+    this.angle = part;
+    this.moveAngle = 0;
+    this.speed = 0;
+    this.x = x;
+    this.y = y; 
+    
+    this.update = function(){
+    ctx = myGameArea.context;
+    if (type == "image") {
+        ctx.save();
+        ctx.translate(this.x, this.y); 
+        ctx.rotate(this.angle);
+        ctx.drawImage(this.image, this.width/-2, this.height/-2,this.width, this.height);
+        ctx.restore(); 
+    }else {
+        if (this.type == "text") {
+            ctx.font = this.width + " " + this.height;
+            ctx.fillStyle = color;
+            ctx.fillText(this.text, this.x, this.y);
+        }else{
+            ctx.save();
+            ctx.translate(this.x, this.y); 
+            ctx.rotate(this.angle);
+            ctx.fillStyle = color;
+            ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height); 
+            ctx.restore();  
+        }
+      }
+    }
+    this.newPos = function() {
+        this.angle += this.moveAngle * Math.PI / 180;
+        this.x += this.speed * Math.sin(this.angle);
+        this.y -= this.speed * Math.cos(this.angle);
+    }
+    this.crashWith = function(otherobj) {
+        var a=this.height;
+        var b=this.width;
+
+        mytopLeftx=this.x + this.width*Math.cos(this.angle)/2 + this.height*Math.sin(this.angle)/2;//x1
+        mytopLefty=this.y + this.width*Math.sin(this.angle)/2 - this.height*Math.cos(this.angle)/2;//y1
+
+        mytopRightx=this.x + this.width*Math.cos(this.angle)/2 - this.height*Math.sin(this.angle)/2;//x2
+        mytopRighty=this.y + this.width*Math.sin(this.angle)/2 + this.height*Math.cos(this.angle)/2;//y2
+
+        mybottomLeftx=this.x - this.width*Math.cos(this.angle)/2 + this.height*Math.sin(this.angle)/2;//x3
+        mybottomLefty=this.y - this.width*Math.sin(this.angle)/2 - this.height*Math.cos(this.angle)/2;//y3
+
+        mybottomRightx=this.x - this.width*Math.cos(this.angle)/2 - this.height*Math.sin(this.angle)/2;//x4
+        mybottomRighty=this.y - this.width*Math.sin(this.angle)/2 + this.height*Math.cos(this.angle)/2;//y4
+
+        otopLeftx=otherobj.x + otherobj.width*Math.cos(otherobj.angle)/2 + otherobj.height*Math.sin(otherobj.angle)/2;
+        otopLefty=otherobj.y + otherobj.width*Math.sin(otherobj.angle)/2 - otherobj.height*Math.cos(otherobj.angle)/2;
+
+        otopRightx=otherobj.x + otherobj.width*Math.cos(otherobj.angle)/2 - otherobj.height*Math.sin(otherobj.angle)/2;
+        otopRighty=otherobj.y + otherobj.width*Math.sin(otherobj.angle)/2 + otherobj.height*Math.cos(otherobj.angle)/2;
+
+        obottomLeftx=otherobj.x - otherobj.width*Math.cos(otherobj.angle)/2 + otherobj.height*Math.sin(otherobj.angle)/2;
+        obottomLefty=otherobj.y - otherobj.width*Math.sin(otherobj.angle)/2 - otherobj.height*Math.cos(otherobj.angle)/2;
+
+        obottomRightx=otherobj.x - otherobj.width*Math.cos(otherobj.angle)/2 - otherobj.height*Math.sin(otherobj.angle)/2;
+        obottomRighty=otherobj.y - otherobj.width*Math.sin(otherobj.angle)/2 + otherobj.height*Math.cos(otherobj.angle)/2;
+
+        area1=area(otopLeftx,otopLefty,mytopLeftx,mytopLefty,mytopRightx,mytopRighty);
+        area2=area(otopLeftx,otopLefty,mytopRightx,mytopRighty,mybottomRightx,mybottomRighty);
+        area3=area(otopLeftx,otopLefty,mybottomRightx,mybottomRighty,mybottomLeftx,mybottomLefty);
+        area4=area(otopLeftx,otopLefty,mybottomLeftx,mybottomLefty,mytopLeftx,mytopLefty);
+        area5=area(otopRightx,otopRighty,mytopLeftx,mytopLefty,mytopRightx,mytopRighty);
+        area6=area(otopRightx,otopRighty,mytopRightx,mytopRighty,mybottomRightx,mybottomRighty);
+        area7=area(otopRightx,otopRighty,mybottomRightx,mybottomRighty,mybottomLeftx,mybottomLefty);
+        area8=area(otopRightx,otopRighty,mybottomLeftx,mybottomLefty,mytopLeftx,mytopLefty);
+        area9=area(obottomRightx,obottomRighty,mytopLeftx,mytopLefty,mytopRightx,mytopRighty);
+        area10=area(obottomRightx,obottomRighty,mytopRightx,mytopRighty,mybottomRightx,mybottomRighty);
+        area11=area(obottomRightx,obottomRighty,mybottomRightx,mybottomRighty,mybottomLeftx,mybottomLefty);
+        area12=area(obottomRightx,obottomRighty,mybottomLeftx,mybottomLefty,mytopLeftx,mytopLefty);
+        area13=area(obottomLeftx,obottomLefty,mytopLeftx,mytopLefty,mytopRightx,mytopRighty);
+        area14=area(obottomLeftx,obottomLefty,mytopRightx,mytopRighty,mybottomRightx,mybottomRighty);
+        area15=area(obottomLeftx,obottomLefty,mybottomRightx,mybottomRighty,mybottomLeftx,mybottomLefty);
+        area16=area(obottomLeftx,obottomLefty,mybottomLeftx,mybottomLefty,mytopLeftx,mytopLefty);
+
+        ha1=2*area1/b;
+        ha2=2*area2/a;
+        ha3=2*area3/b;
+        ha4=2*area4/a;
+
+        hb1=2*area5/b;
+        hb2=2*area6/a;
+        hb3=2*area7/b;
+        hb4=2*area8/a;
+
+        hc1=2*area9/b;
+        hc2=2*area10/a;
+        hc3=2*area11/b;
+        hc4=2*area12/a;
+
+        hd1=2*area13/b;
+        hd2=2*area14/a;
+        hd3=2*area15/b;
+        hd4=2*area16/a;
+
+        var crash = false;
+        if(ha1<=a && ha2<=b && ha3<=a && ha4<=b){
+            crash=true;
+        }if(hb1<=a && hb2<=b && hb3<=a && hb4<=b){
+            crash=true;
+        }if(hc1<=a && hc2<=b && hc3<=a && hc4<=b){
+            crash=true;
+        }if(hd1<=a && hd2<=b && hd3<=a && hd4<=b){
+            crash=true;
+        }
+        return crash;
+    }
+}
+
+var guncount=900;
+var gunscount=900;
+var explodec=false;
+var explodecs=false;
+
+function gunsFly(){
+    gunscount-=20;
+    explode1.speed+=explodespeed;
+    explode2.speed+=explodespeed/2;
+    explode3.speed+=explodespeed/1.5;
+    explode4.speed+=explodespeed/3;
+    explode5.speed+=explodespeed;
+    explode6.speed+=explodespeed/2;
+    explode7.speed+=explodespeed/1.5;
+    explode8.speed+=explodespeed/3;
+    explode9.speed+=explodespeed;
+    explode10.speed+=explodespeed/2;
+    explode11.speed+=explodespeed/1.5;
+    explode12.speed+=explodespeed/3;
+    explode13.speed+=explodespeed;
+    explode14.speed+=explodespeed/2;
+    explode15.speed+=explodespeed/1.5;
+    //There shall be no 'die die die'!!!
+    explode16.speed+=explodespeed/3;
+    explode17.speed+=explodespeed;
+    explode18.speed+=explodespeed/2;
+    explode19.speed+=explodespeed/1.5;
+    explode20.speed+=explodespeed/3;
+    explodec=true;
+    if(gunscount>879.5){
+        resetex();
+    }else{
+        if(gunscount>800){
+            myGamePiecet.image.src = "shermanwhc.png";
+        }else{
+            myGamePiecet.image.src = "sherman.png";
+            if(gunscount>0){
+                gun.x += 1.5 * Math.sin(cannons.angle);
+                gun.y -= 1.5 * Math.cos(cannons.angle);
+                gun.moveAngle=-2.5;
+            }else{
+                 gun.moveAngle=0;
+            }  
+        }  
+    }
+}
+
+function resetexs(){
+    explodes1.x=myGamePieces.x; explodes1.y=myGamePieces.y;
+    explodes2.x=myGamePieces.x; explodes2.y=myGamePieces.y;
+    explodes3.x=myGamePieces.x; explodes3.y=myGamePieces.y;
+    explodes4.x=myGamePieces.x; explodes4.y=myGamePieces.y;
+    explodes5.x=myGamePieces.x; explodes5.y=myGamePieces.y;
+    explodes6.x=myGamePieces.x; explodes6.y=myGamePieces.y;
+    explodes7.x=myGamePieces.x; explodes7.y=myGamePieces.y;
+    explodes8.x=myGamePieces.x; explodes8.y=myGamePieces.y;
+    explodes9.x=myGamePieces.x; explodes9.y=myGamePieces.y;
+    explodes10.x=myGamePieces.x; explodes10.y=myGamePieces.y;
+    explodes11.x=myGamePieces.x; explodes11.y=myGamePieces.y;
+    explodes12.x=myGamePieces.x; explodes12.y=myGamePieces.y;
+    explodes13.x=myGamePieces.x; explodes13.y=myGamePieces.y;
+    explodes14.x=myGamePieces.x; explodes14.y=myGamePieces.y;
+    explodes15.x=myGamePieces.x; explodes15.y=myGamePieces.y;
+    explodes16.x=myGamePieces.x; explodes16.y=myGamePieces.y;
+    explodes17.x=myGamePieces.x; explodes17.y=myGamePieces.y;
+    explodes18.x=myGamePieces.x; explodes18.y=myGamePieces.y;
+    explodes19.x=myGamePieces.x; explodes19.y=myGamePieces.y;
+    explodes20.x=myGamePieces.x; explodes20.y=myGamePieces.y;
+}
+function resetex(){
+    explode1.x=myGamePiecet.x; explode1.y=myGamePiecet.y;
+    explode2.x=myGamePiecet.x; explode2.y=myGamePiecet.y;
+    explode3.x=myGamePiecet.x; explode3.y=myGamePiecet.y;
+    explode4.x=myGamePiecet.x; explode4.y=myGamePiecet.y;
+    explode5.x=myGamePiecet.x; explode5.y=myGamePiecet.y;
+    explode6.x=myGamePiecet.x; explode6.y=myGamePiecet.y;
+    explode7.x=myGamePiecet.x; explode7.y=myGamePiecet.y;
+    explode8.x=myGamePiecet.x; explode8.y=myGamePiecet.y;
+    explode9.x=myGamePiecet.x; explode9.y=myGamePiecet.y;
+    explode10.x=myGamePiecet.x; explode10.y=myGamePiecet.y;
+    explode11.x=myGamePiecet.x; explode11.y=myGamePiecet.y;
+    explode12.x=myGamePiecet.x; explode12.y=myGamePiecet.y;
+    explode13.x=myGamePiecet.x; explode13.y=myGamePiecet.y;
+    explode14.x=myGamePiecet.x; explode14.y=myGamePiecet.y;
+    explode15.x=myGamePiecet.x; explode15.y=myGamePiecet.y;
+    explode16.x=myGamePiecet.x; explode16.y=myGamePiecet.y;
+    explode17.x=myGamePiecet.x; explode17.y=myGamePiecet.y;
+    explode18.x=myGamePiecet.x; explode18.y=myGamePiecet.y;
+    explode19.x=myGamePiecet.x; explode19.y=myGamePiecet.y;
+    explode20.x=myGamePiecet.x; explode20.y=myGamePiecet.y;
+}
+function gunFly(){
+    guncount-=20;
+        explodes1.speed+=explodespeed;
+        explodes2.speed+=explodespeed/2;
+        explodes3.speed+=explodespeed/1.5;
+        explodes4.speed+=explodespeed/3;
+        explodes5.speed+=explodespeed;
+        explodes6.speed+=explodespeed/2;
+        explodes7.speed+=explodespeed/1.5;
+        explodes8.speed+=explodespeed/3;
+        explodes9.speed+=explodespeed;
+        explodes10.speed+=explodespeed/2;
+        explodes11.speed+=explodespeed/1.5;
+        explodes12.speed+=explodespeed/3;
+        explodes13.speed+=explodespeed;
+        explodes14.speed+=explodespeed/2;
+        explodes15.speed+=explodespeed/1.5;
+        explodes16.speed+=explodespeed/3;
+        explodes17.speed+=explodespeed;
+        explodes18.speed+=explodespeed/2;
+        explodes19.speed+=explodespeed/1.5;
+        explodes20.speed+=explodespeed/3;
+        explodecs=true; 
+    
+    if(guncount>879.5){
+        resetexs();
+    }else{
+        if(guncount>800){
+            myGamePieces.image.src = "tigerwh.png";
+        }else{
+            myGamePieces.image.src = "tiger.png";
+            if(guncount>0){
+                guns.x += 1.5 * Math.sin(cannon.angle);
+                guns.y -= 1.5 * Math.cos(cannon.angle);
+                guns.moveAngle=-2.5;
+            }else{
+                 guns.moveAngle=0;
+            }  
+        }  
+    }
+}
+var excount=500;
+var excounts=500;
+var obsbl1=100;
+var obsbl2=100;
+var obsbl3=100;
+var obsbl4=100;
+var obsbl5=100;
+var tigerx1=0;
+var tigery1=0;
+var tigerx2=0;
+var tigery2=0;
+var tigerx3=0;
+var tigery3=0;
+var tigerx4=0;
+var tigery4=0;
+var slowexp=2000;
+var explodepro=false;
+var slowexps=500;
+var explodepros=false;
+
+//Update Methods!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+function updateGameArea(){
+    tigerx1=myGamePieces.x + myGamePieces.width*Math.cos(myGamePieces.angle)/2 + myGamePieces.height*Math.sin(myGamePieces.angle)/2;
+    tigery1=myGamePieces.y + myGamePieces.width*Math.sin(myGamePieces.angle)/2 - myGamePieces.height*Math.cos(myGamePieces.angle)/2;//y1
+
+    tigerx2=myGamePieces.x + myGamePieces.width*Math.cos(myGamePieces.angle)/2 - myGamePieces.height*Math.sin(myGamePieces.angle)/2;//x2
+    tigery2=myGamePieces.y + myGamePieces.width*Math.sin(myGamePieces.angle)/2 + myGamePieces.height*Math.cos(myGamePieces.angle)/2;//y2
+
+    tigerx3=myGamePieces.x - myGamePieces.width*Math.cos(myGamePieces.angle)/2 + myGamePieces.height*Math.sin(myGamePieces.angle)/2;//x3
+    tigery3=myGamePieces.y - myGamePieces.width*Math.sin(myGamePieces.angle)/2 - myGamePieces.height*Math.cos(myGamePieces.angle)/2;//y3
+
+    tigerx4=myGamePieces.x - myGamePieces.width*Math.cos(myGamePieces.angle)/2 - myGamePieces.height*Math.sin(myGamePieces.angle)/2;//x4
+    tigery4=myGamePieces.y - myGamePieces.width*Math.sin(myGamePieces.angle)/2 + myGamePieces.height*Math.cos(myGamePieces.angle)/2;//y4
+
+    cannonsTop=area(cannons.x,cannons.y,otopLeftx,otopLefty,obottomLeftx,obottomLefty);
+    cannonsRight=area(cannons.x,cannons.y,otopLeftx,otopLefty,otopRightx,otopRighty);
+    cannonsBottom=area(cannons.x,cannons.y,otopRightx,otopRighty,obottomRightx,obottomRighty);
+    cannonsLeft=area(cannons.x,cannons.y,obottomRightx,obottomRighty,obottomLeftx,obottomLefty);
+
+    cannonTop=area(cannon.x,cannon.y,tigerx1,tigery1,tigerx3,tigery3);
+    cannonRight=area(cannon.x,cannon.y,tigerx1,tigery1,tigerx2,tigery2);
+    cannonBottom=area(cannon.x,cannon.y,tigerx2,tigery2,tigerx4,tigery4);
+    cannonLeft=area(cannon.x,cannon.y,tigerx4,tigery4,tigerx3,tigery3);
+
+    test1=new component(5, 5, "red", 999, 999);
+    test2=new component(5, 5, "green", 999, 999);
+    test3=new component(5, 5, "blue", 999, 999);
+    
+    movec=0;
+    movecs=0;
+    if(explodepro){
+        slowexp-=20;
+        if(slowexp<=0){
+            tigerAp=false;
+        }
+    }if(explodepros){
+        slowexps-=20;
+        if(slowexps<=0){
+            shermanAp=false;
+        }
+    }if(!shermanAp){
+        sc=-99999;
+        gun.image.src = "shermanf.png";
+        texts.text="Tank Damaged!";
+        bloods.width=0;
+        gunsFly();
+    }if(!tigerAp){
+        scs=-99999;
+        guns.image.src = "tigerf.png";
+        text.text="Tank Damaged!";
+        blood.width=0;
+        gunFly();
+    }if(shermanBlood<=0){
+        shermanAp=false;
+    }if(tigerBlood<=0){
+        tigerAp=false;
+    }if(explodecs){
+        //alert("tigerhit");
+        excount-=20;
+        if(excount<=0){
+            resetexs();
+            explodes1.x=999; explodes1.y=999;
+            explodes2.x=999; explodes2.y=999;
+            explodes3.x=999; explodes3.y=999;
+            explodes4.x=999; explodes4.y=999;
+            explodes5.x=999; explodes5.y=999;
+            explodes6.x=999; explodes6.y=999;
+            explodes7.x=999; explodes7.y=999;
+            explodes8.x=999; explodes8.y=999;
+            explodes9.x=999; explodes9.y=999;
+            explodes10.x=999; explodes10.y=999;
+            explodes11.x=999; explodes11.y=999;
+            explodes12.x=999; explodes12.y=999;
+            explodes13.x=999; explodes13.y=999;
+            explodes14.x=999; explodes14.y=999;
+            explodes15.x=999; explodes15.y=999;
+            explodes16.x=999; explodes16.y=999;
+            explodes17.x=999; explodes17.y=999;
+            explodes18.x=999; explodes18.y=999;
+            explodes19.x=999; explodes19.y=999;
+            explodes20.x=999; explodes20.y=999;
+        }
+    }if(explodec){
+        excounts-=20;
+        if(excounts<=0){
+            resetex();
+            explode1.x=999; explode1.y=999;
+            explode2.x=999; explode2.y=999;
+            explode3.x=999; explode3.y=999;
+            explode4.x=999; explode4.y=999;
+            explode5.x=999; explode5.y=999;
+            explode6.x=999; explode6.y=999;
+            explode7.x=999; explode7.y=999;
+            explode8.x=999; explode8.y=999;
+            explode9.x=999; explode9.y=999;
+            explode10.x=999; explode10.y=999;
+            explode11.x=999; explode11.y=999;
+            explode12.x=999; explode12.y=999;
+            explode13.x=999; explode13.y=999;
+            explode14.x=999; explode14.y=999;
+            explode15.x=999; explode15.y=999;
+            explode16.x=999; explode16.y=999;
+            explode17.x=999; explode17.y=999;
+            explode18.x=999; explode18.y=999;
+            explode19.x=999; explode19.y=999;
+            explode20.x=999; explode20.y=999;
+        }
+    }if(myGamePieces.angle==-6.283185253783088 || myGamePieces.angle==6.283185253783088){
+        myGamePieces.angle=0;
+    }if(obsbl1<=0){
+        obs1.x=999;
+        obs1.y=999;
+    }if(obsbl2<=0){
+        obs2.x=999;
+        obs2.y=999;
+    }if(obsbl3<=0){
+        obs3.x=999;
+        obs3.y=999;
+    }if(obsbl4<=0){
+        obs4.x=999;
+        obs4.y=999;
+    }if(obsbl5<=0){
+        obs5.x=999;
+        obs5.y=999;
+    }
+    //check for armor- Sherman:
+    if(cannons.crashWith(myGamePiecet)||myGamePiecet.crashWith(cannons)){
+        chance=Math.random();
+        if(Math.min(cannonsTop,cannonsRight,cannonsBottom,cannonsLeft)==cannonsTop){
+            if(chance<=0.97){
+                explodepros=true;
+                gun.image.src = "shermanf.png";
+            }else{
+                shermanBlood-=30;
+                bloods.width-=33;
+                bloods.x-=33/2;
+            }
+        }else if(Math.min(cannonsTop,cannonsRight,cannonsBottom,cannonsLeft)==cannonsRight){
+            if(chance<=0.99){
+                explodepros=true;
+                gun.image.src = "shermanf.png";
+            }else{
+                shermanBlood-=30;
+                bloods.width-=33;
+                bloods.x-=33/2;
+            }
+        }else if(Math.min(cannonsTop,cannonsRight,cannonsBottom,cannonsLeft)==cannonsBottom){
+            explodepros=true;
+            gun.image.src = "shermanf.png";
+        }else if(Math.min(cannonsTop,cannonsRight,cannonsBottom,cannonsLeft)==cannonsLeft){
+            if(chance<=0.99){
+                explodepros=true;
+                gun.image.src = "shermanf.png";
+            }else{
+                shermanBlood-=30;
+                bloods.width-=33;
+                bloods.x-=33/2;
+            }
+        }
+        cannons.x=-9999;
+        cannons.y=-9999;
+
+    }
+    //check for armor- Tiger:
+    if(cannon.crashWith(myGamePieces)||myGamePieces.crashWith(cannon)){
+        chances=Math.random();
+        if(Math.min(cannonTop,cannonRight,cannonBottom,cannonLeft)==cannonTop){
+            if(chances<=0.1){
+                explodepro=true;
+                guns.image.src = "tigerf.png";
+            }else{
+                tigerBlood-=15;
+                blood.width-=110*0.15;
+                blood.x-=110*0.15/2;
+            }
+        }else if(Math.min(cannonTop,cannonRight,cannonBottom,cannonLeft)==cannonRight){
+            if(chances<=0.35){
+                explodepro=true;
+                guns.image.src = "tigerf.png";
+            }else{
+                tigerBlood-=30;
+                blood.width-=33;
+                blood.x-=33/2;
+            }
+        }else if(Math.min(cannonTop,cannonRight,cannonBottom,cannonLeft)==cannonBottom){
+            explodepro=true;
+            guns.image.src = "tigerf.png";
+        }else if(Math.min(cannonTop,cannonRight,cannonBottom,cannonLeft)==cannonLeft){
+            if(chances<=0.35){
+                explodepro=true;
+                guns.image.src = "tigerf.png";
+            }else{
+                tigerBlood-=30;
+                blood.width-=33;
+                blood.x-=33/2;
+            }
+        }
+        cannon.x=-9999;
+        cannon.y=-9999;
+
+    }if(myGamePiecet.crashWith(myGamePieces)||myGamePieces.crashWith(myGamePiecet)){
+        myGamePiecet.speed=0;
+        myGamePieces.speed=0;
+        shermanBlood-=0.3;
+        bloods.width-=0.33;
+        bloods.x-=0.33/2;
+        tigerBlood-=0.2;
+        blood.width-=0.22;
+        blood.x-=0.22/2;
+    }if(myGamePiecet.crashWith(obs1)||obs1.crashWith(myGamePiecet)||myGamePiecet.crashWith(obs2)||obs2.crashWith(myGamePiecet)||myGamePiecet.crashWith(obs3)||obs3.crashWith(myGamePiecet)||myGamePiecet.crashWith(obs4)||obs4.crashWith(myGamePiecet)||myGamePiecet.crashWith(obs5)||obs5.crashWith(myGamePiecet)){
+        myGamePiecet.speed=0;
+    }if(cannon.crashWith(obs1)||obs1.crashWith(cannon)){
+        obsbl1-=50;
+        cannon.x=-9999;
+        cannon.y=-9999;
+    }if(cannon.crashWith(obs2)||obs2.crashWith(cannon)){
+        obsbl2-=50;
+        cannon.x=-9999;
+        cannon.y=-9999;
+    }if(cannon.crashWith(obs3)||obs3.crashWith(cannon)){
+        obsbl3-=50;
+        cannon.x=-9999;
+        cannon.y=-9999;
+    }if(cannon.crashWith(obs4)||obs4.crashWith(cannon)){
+        obsbl4-=50;
+        cannon.x=-9999;
+        cannon.y=-9999;
+    }if(cannon.crashWith(obs5)||obs5.crashWith(cannon)){
+        obsbl5-=50;
+        cannon.x=-9999;
+        cannon.y=-9999;
+    }if(myGamePieces.crashWith(obs1)||obs1.crashWith(myGamePieces)||myGamePieces.crashWith(obs2)||obs2.crashWith(myGamePieces)||myGamePieces.crashWith(obs3)||obs3.crashWith(myGamePieces)||myGamePieces.crashWith(obs4)||obs4.crashWith(myGamePieces)||myGamePieces.crashWith(obs5)||obs5.crashWith(myGamePieces)){
+        myGamePieces.speed=0;
+    }if(cannons.crashWith(obs1)||obs1.crashWith(cannons)){
+        obsbl1-=100;
+        cannons.x=-9999;
+        cannons.y=-9999;
+    }if(cannons.crashWith(obs2)||obs2.crashWith(cannons)){
+        obsbl2-=100;
+        cannons.x=-9999;
+        cannons.y=-9999;
+    }if(cannons.crashWith(obs3)||obs3.crashWith(cannons)){
+        obsbl3-=100;
+        cannons.x=-9999;
+        cannons.y=-9999;
+    }if(cannons.crashWith(obs4)||obs4.crashWith(cannons)){
+        obsbl4-=100;
+        cannons.x=-9999;
+        cannons.y=-9999;
+    }if(cannons.crashWith(obs5)||obs5.crashWith(cannons)){
+        obsbl5-=100;
+        cannons.x=-9999;
+        cannons.y=-9999;
+    }
+
+
+    myGameArea.clear();
+    myGamePieces.moveAngle = 0;  
+    cannons.moveAngle=0;
+    myGamePiecet.moveAngle = 0;
+    
+    cannon.moveAngle=0;
+    if(tigerAp){
+        guns.y=myGamePieces.y;
+        guns.x=myGamePieces.x;
+        guns.moveAngle = 0;
+    }if(shermanAp){
+        gun.y=myGamePiecet.y;
+        gun.x=myGamePiecet.x;
+        gun.moveAngle = 0;
+        
+    }
+
+/*** Tiger Tank Movements ***/
+
+    if (myGameArea.keys && myGameArea.keys[37] && tigerAp) {
+        myGamePieces.moveAngle = -0.19;
+        guns.moveAngle=-0.19; 
+        cannons.moveAngle=-0.19;
+    }if (myGameArea.keys && myGameArea.keys[39] && tigerAp) {
+        myGamePieces.moveAngle = 0.19;
+        guns.moveAngle=0.19;
+        cannons.moveAngle=0.19;
+    }if (myGameArea.keys && myGameArea.keys[38] && tigerAp) {
+        movecs=1;
+        if(myGamePieces.speed<0.57){
+            myGamePieces.speed+= 0.004;
+        }else{
+            myGamePieces.speed=0.57;
+        }
+    }if(myGamePieces.speed>0&&movecs==0){
+        myGamePieces.speed-=0.008;
+    }if (myGameArea.keys && myGameArea.keys[40] && tigerAp) {
+        movecs=1;
+        if(myGamePieces.speed>-0.52){
+            myGamePieces.speed-= 0.004;
+        }else{
+            myGamePieces.speed=-0.52;
+        }
+    }if(myGamePieces.speed<0&&movecs==0){
+        myGamePieces.speed+=0.008;
+    }if (myGameArea.keys && myGameArea.keys[78] && tigerAp) {
+        guns.moveAngle=-0.12;
+        cannons.moveAngle=-0.12;
+    }if (myGameArea.keys && myGameArea.keys[77] && tigerAp) {
+        guns.moveAngle=0.12;
+        cannons.moveAngle=0.12;
+    }if (myGameArea.keys && myGameArea.keys[32] && tigerAp) {
+    	cannoncs=1;
+    }if(cannoncs==1 && tigerAp){
+        cannons.speed=14;
+        scs+=20;
+        count-=20;
+        text.text="Loading:"+count; 
+        if(firecs==0){
+            guns.image.src = "firet.png";
+            show.image.src = "cannonl.png";
+        }
+        if(scs/240==1){
+            guns.image.src = "tigerg.png";
+            firecs=1;
+        }
+        if(scs%6000==0){
+            cannons.x=myGamePieces.x;
+            cannons.y=myGamePieces.y;
+            scs=0;
+            firecs=0;
+            cannoncs=0;
+            show.image.src = "cannonr.png";
+        }
+    }if(cannoncs==0){
+        cannons.x=myGamePieces.x;
+        cannons.y=myGamePieces.y;
+        count=6000;
+        if(tigerAp){
+            text.text="Ready to fire.";
+        }
+    }
+    
+/*** Sherman Tank Movements ***/
+
+    if (myGameArea.keys && myGameArea.keys[65] && shermanAp) {
+        myGamePiecet.moveAngle = -0.25;
+        gun.moveAngle=-0.25; 
+        cannon.moveAngle=-0.25;
+    }if (myGameArea.keys && myGameArea.keys[68] && shermanAp) {
+        myGamePiecet.moveAngle = 0.25;
+        gun.moveAngle=0.25;
+        cannon.moveAngle=0.25;
+    }if (myGameArea.keys && myGameArea.keys[87] && shermanAp) {
+        movec=1;
+        if(myGamePiecet.speed<1){
+            myGamePiecet.speed+= 0.0125;
+        }else{
+            myGamePiecet.speed=1;
+        }
+    }if(myGamePiecet.speed>0&&movec==0){
+        myGamePiecet.speed-=0.008;
+    }if (myGameArea.keys && myGameArea.keys[83] && shermanAp) {
+        movec=1;
+        if(myGamePiecet.speed>-1){
+            myGamePiecet.speed-= 0.008;
+        }else{
+            myGamePiecet.speed=-1;
+        }
+    }if(myGamePiecet.speed<0 && movec==0 && shermanAp){
+        myGamePiecet.speed+=0.008;
+    }if (myGameArea.keys && myGameArea.keys[49] && shermanAp) {
+        gun.moveAngle=-0.31;
+        cannon.moveAngle=-0.31;
+    }if (myGameArea.keys && myGameArea.keys[50] && shermanAp) {
+        gun.moveAngle=0.31;
+        cannon.moveAngle=0.31;
+    }if (myGameArea.keys && myGameArea.keys[51] && shermanAp) {
+        cannonc=1;
+    }if(cannonc==1 && shermanAp){
+        cannon.speed=14;
+        counts-=20;
+        texts.text="Loading:"+counts; 
+        sc+=20;
+        if(firec==0){
+            gun.image.src = "fires.png";
+            shows.image.src = "cannonl.png";
+        }
+        if(sc/240==1){
+            gun.image.src = "shermang.png";
+            firec=1;
+        }
+        if(sc%5000==0){
+            cannon.x=myGamePiecet.x;
+            cannon.y=myGamePiecet.y;
+            sc=0;
+            firec=0;
+            cannonc=0;
+            shows.image.src = "cannonr.png";
+        }
+    }if(cannonc==0 || counts==0){
+        cannon.x=myGamePiecet.x;
+        cannon.y=myGamePiecet.y;
+        counts=5000;
+        if(shermanAp){
+            texts.text="Ready to fire.";
+        }
+    }
+
+/*** update & newpose ***/
+
+    cannon.newPos();
+    cannon.update();
+    myGamePiecet.newPos();
+    myGamePiecet.update();
+    gun.newPos();
+    gun.update();
+
+    cannons.newPos();
+    cannons.update();
+    myGamePieces.newPos();
+    myGamePieces.update();
+    guns.newPos();
+    guns.update();
+
+    text.update();
+    show.newPos();
+    show.update();
+    blood.update();
+    texts.update();
+    shows.newPos();
+    shows.update();
+    bloods.update();
+
+    test1.update();
+    test2.update();
+    test3.update();
+
+    explode1.update();
+    explode2.update();
+    explode3.update();
+    explode4.update();
+    explode5.update();
+    explode6.update();
+    explode7.update();
+    explode8.update();
+    explode9.update();
+    explode10.update();
+    explode11.update();
+    explode12.update();
+    explode13.update();
+    explode14.update();
+    explode15.update();
+    explode16.update();
+    explode17.update();
+    explode18.update();
+    explode19.update();
+    explode20.update();
+    explode1.newPos();
+    explode2.newPos();
+    explode3.newPos();
+    explode4.newPos();
+    explode5.newPos();
+    explode6.newPos();
+    explode7.newPos();
+    explode8.newPos();
+    explode9.newPos();
+    explode10.newPos();
+    explode11.newPos();
+    explode12.newPos();
+    explode13.newPos();
+    explode14.newPos();
+    explode15.newPos();
+    explode16.newPos();
+    explode17.newPos();
+    explode18.newPos();
+    explode19.newPos();
+    explode20.newPos();
+
+    explodes1.update();
+    explodes2.update();
+    explodes3.update();
+    explodes4.update();
+    explodes5.update();
+    explodes6.update();
+    explodes7.update();
+    explodes8.update();
+    explodes9.update();
+    explodes10.update();
+    explodes11.update();
+    explodes12.update();
+    explodes13.update();
+    explodes14.update();
+    explodes15.update();
+    explodes16.update();
+    explodes17.update();
+    explodes18.update();
+    explodes19.update();
+    explodes20.update();
+    explodes1.newPos();
+    explodes2.newPos();
+    explodes3.newPos();
+    explodes4.newPos();
+    explodes5.newPos();
+    explodes6.newPos();
+    explodes7.newPos();
+    explodes8.newPos();
+    explodes9.newPos();
+    explodes10.newPos();
+    explodes11.newPos();
+    explodes12.newPos();
+    explodes13.newPos();
+    explodes14.newPos();
+    explodes15.newPos();
+    explodes16.newPos();
+    explodes17.newPos();
+    explodes18.newPos();
+    explodes19.newPos();
+    explodes20.newPos();
+
+    obs1.update();
+    obs2.update();
+    obs3.update();
+    obs4.update();
+    obs5.update();
+}
+
+function goToPage(){
+    window.location="tankgame.html";
+}
+</script>
